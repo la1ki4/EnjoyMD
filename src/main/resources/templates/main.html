@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Thymeleaf Example</title>
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
     <div class="header">
         <div class="nav-bar">
             <div class="logo">
-                <a href="#"><img src="../static/img/EnjoyMDLogo.svg" alt="" srcset=""></a>
+                <a href="#"><img th:src="@{img/EnjoyMDLogo.svg}" alt="" srcset=""></a>
             </div>
             <div class="menu">
                 <span class="link-text"><a href="#">Locations</a></span>
@@ -31,7 +31,7 @@
             </div>
             <div class="picture-block">
                 <div class="picture">
-                    <img src="../static/img/picture.png" alt="" srcset="">
+                    <img th:src="@{/img/picture.png}" alt="" srcset="">
                 </div>
             </div>
         </div>
