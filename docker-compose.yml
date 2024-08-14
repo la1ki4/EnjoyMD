@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=EnjoyMD
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=14702580+
+    ports:
+      - "5432:5432"
