@@ -1,0 +1,30 @@
+.header{
+    height: 90px;
+    margin: 50px;
+}
+
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu{
+    display: flex;
+}
+
+.link-text{
+    margin-left: 97px;
+}
+
+
+.link-text a{
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat ExtraLight';
+    font-weight: lighter;
+}
+
+.yel a{
+    color: #FFB800;
+}

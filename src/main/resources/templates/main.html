@@ -2,21 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Thymeleaf Example</title>
+    <link rel="stylesheet" th:href="@{/css/null.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
-    <div class="header">
-        <div class="nav-bar">
-            <div class="logo">
-                <a href="#"><img th:src="@{img/EnjoyMDLogo.svg}" alt="" srcset=""></a>
-            </div>
-            <div class="menu">
-                <span class="link-text"><a href="#">Locations</a></span>
-                <span class="link-text"><a href="#">About us</a></span>
-                <span class="link-text yel"><a href="#">Sign in</a></span>
-            </div>
-        </div>
-    </div>
+    <div th:insert="header_fragment :: header"></div>
     <div class="main">
         <div class="container">
             <div class="text-block">
@@ -26,7 +17,7 @@
                         Or maybe you will organize some kind of event yourself? 
                         This platform will help you find a place or people where 
                         you can have a good time.</div>
-                    <div class="register-button"><button>Register</button></div>
+                    <div class="register-button"><a href="/register"><button>Register</button></a></div>
                 </div>
             </div>
             <div class="picture-block">
