@@ -1,0 +1,16 @@
+database:
+ type: DB
+
+spring:
+  application:
+    name: EnjoyMD
+  datasource:
+    url: jdbc:postgresql://localhost:5432/EnjoyMD
+    username: admin
+    password: 14702580+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
