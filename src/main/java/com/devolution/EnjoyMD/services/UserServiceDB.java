@@ -3,37 +3,35 @@ package com.devolution.EnjoyMD.services;
 import com.devolution.EnjoyMD.models.User;
 import com.devolution.EnjoyMD.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 @ConditionalOnProperty(name = "database.type", havingValue = "DB")
-public class UserServiceDB implements UserService {
+public class UserServiceDB implements UserService{
 
+    @Autowired
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+    public boolean registerUser(User user) {
+        if(userRepository.findByEmail(user.getEmail()) != null){
+            return false;
+        }
 
-    @Override
-    public User getUserById(Integer id) {
-        return userRepository.findById(id).orElse(new User());
-    }
+        if(userRepository.findByUsername(user.getUsername()) != null){
+            return false;
+        }
 
-    @Override
-    public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-    }
-
-    @Override
-    public void deleteUser(Integer id) {
-        Optional<User> byId = userRepository.findById(id);
-        byId.ifPresent(userRepository::delete);
+        return true;
     }
 }

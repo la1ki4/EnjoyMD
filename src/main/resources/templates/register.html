@@ -11,28 +11,26 @@
     <div th:insert="header_fragment :: header"></div>
     <div class="main">
         <div class="container">
-            <div class="create-account">
-                <h1>Create Account</h1>
-            </div>
-            <div class="field">
-                <div class="field-name">Login</div>
-                <input type="text">
-            </div>
-            <div class="field">
-                <div class="field-name">Password</div>
-                <input type="password">
-            </div>
-            <div class="field">
-                <div class="field-name">Repeat password</div>
-                <input type="password">
-            </div>
-            <div class="field">
-                <div class="field-name">E-mail</div>
-                <input type="email">
-            </div>
-            <div class="button">
-                <input type="button" value="Register">
-            </div>
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <div class="create-account">
+                    <h1>Create Account</h1>
+                </div>
+                <div class="field">
+                    <div class="field-name">Login</div>
+                    <input type="text" th:field="*{username}" required>
+                </div>
+                <div class="field">
+                    <div class="field-name">E-mail</div>
+                    <input type="email" th:field="*{email}" required>
+                </div>
+                <div class="field">
+                    <div class="field-name">Password</div>
+                    <input type="password" th:field="*{password}" required>
+                </div>
+                <div class="button">
+                    <button type="submit" class="auth-button">Register</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

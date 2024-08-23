@@ -4,7 +4,7 @@ services:
     image: postgres:latest
     environment:
       - POSTGRES_DB=EnjoyMD
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=14702580+
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
     ports:
       - "5432:5432"

@@ -11,20 +11,22 @@
 <div th:insert="header_fragment :: header"></div>
 <div class="main">
     <div class="container">
-        <div class="create-account">
-            <h1>Login</h1>
-        </div>
-        <div class="field">
-            <div class="field-name">Login/E-mail</div>
-            <input type="text">
-        </div>
-        <div class="field">
-            <div class="field-name">Password</div>
-            <input type="password">
-        </div>
-        <div class="button">
-            <input type="button" value="Login">
-        </div>
+        <form th:action="@{/login}" method="post">
+            <div class="create-account">
+                <h1>Login</h1>
+            </div>
+            <div class="field">
+                <div class="field-name">Login/E-mail</div>
+                <input type="text" name="username">
+            </div>
+            <div class="field">
+                <div class="field-name">Password</div>
+                <input type="password" name="password">
+            </div>
+            <div class="button">
+                <button type="submit" class="auth-button">Login</button>
+            </div>
+        </form>
     </div>
 </div>
 </body>

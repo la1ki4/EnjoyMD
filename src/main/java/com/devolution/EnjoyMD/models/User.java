@@ -2,12 +2,14 @@ package com.devolution.EnjoyMD.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 @Data
 @Table(name = "users")
@@ -18,15 +20,11 @@ public class User {
     @Column(name = "id")
     private int userId;
     @Column(name = "u_name")
-    private String userName;
+    private String username;
     @Column(name = "u_email")
-    private String userEmail;
+    private String email;
     @Column(name = "u_password")
-    private String userPassword;
-//    @Column(name = "u_posts")
-//    private List<Post> userPosts;
-//    @Column(name = "u_comments")
-//    private List<Comment> userComments;
-//    @Column(name = "u_likes")
-//    private List<Like> userLikes;
+    private String password;
+    @Column(name = "u_role")
+    private String role = "USER";
 }
