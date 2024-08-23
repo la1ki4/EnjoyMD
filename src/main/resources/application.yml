@@ -1,16 +1,25 @@
 database:
  type: DB
-
 spring:
   application:
     name: EnjoyMD
   datasource:
     url: jdbc:postgresql://localhost:5432/EnjoyMD
-    username: admin
-    password: 14702580+
+    username: postgres
+    password: 1
   jpa:
     hibernate:
       ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        type: trace
+    show-sql: true
+    generate-ddl: true
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.transaction: TRACE

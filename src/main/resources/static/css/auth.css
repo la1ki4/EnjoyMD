@@ -37,7 +37,7 @@ body{
     padding: 0 30px;
 }
 
-.button input{
+.auth-button{
     background: #141414;
     color: #D9D9D9;
     font-size: 48px;
@@ -54,7 +54,7 @@ body{
     padding: 54px;
 }
 
-.button input:hover{
+.button .auth-button:hover{
     transform: scale(1.04);
 
 }
