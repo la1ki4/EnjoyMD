@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,12 +22,22 @@ public class User {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     private int userId;
-    @Column(name = "u_name")
+
     private String username;
-    @Column(name = "u_email")
+
     private String email;
-    @Column(name = "u_password")
+
     private String password;
+
     @Column(name = "u_role")
     private String role = "USER";
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes;
 }
