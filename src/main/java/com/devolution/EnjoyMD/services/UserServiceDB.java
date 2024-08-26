@@ -3,18 +3,14 @@ package com.devolution.EnjoyMD.services;
 import com.devolution.EnjoyMD.models.User;
 import com.devolution.EnjoyMD.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Service
 @AllArgsConstructor
-@ConditionalOnProperty(name = "database.type", havingValue = "DB")
 public class UserServiceDB implements UserService{
 
-    @Autowired
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -22,11 +18,11 @@ public class UserServiceDB implements UserService{
 
     @Override
     public boolean registerUser(User user) {
-        if(userRepository.findByEmail(user.getEmail()) != null){
+        if(userRepository.findByEmail(user.getEmail()).isPresent()){
             return false;
         }
 
-        if(userRepository.findByUsername(user.getUsername()) != null){
+        if(userRepository.findByUsername(user.getUsername()).isPresent()){
             return false;
         }
 

@@ -1,5 +1,5 @@
 body{
-    background: url("../img/bgsite.png");
+    background-color: #0D0D0D;
 }
 
 .main{
@@ -15,20 +15,20 @@ body{
 }
 
 .text-block{
-    text-align: center;
     width: 670px;
 }
+
 
 .description-text{
     margin-top: 45px;
     color: #888888;
     font-family: 'Montserrat';
-    line-height: 1.9;
+    line-height: 1.7;
     font-size: 24px;
 }
 
 .header-text{
-    color: #FFB800;
+    color: #D1D2FF;
     font-family: 'Montserrat';
     font-size: 72px;
 }
@@ -41,13 +41,13 @@ body{
     border: none;
     border-radius: 21px;
     font-family: 'Montserrat Extralight';
-    padding: 15px 0;
-    font-size: 28px;
+    padding: 20px 0;
+    font-size: 24px;
     text-decoration: none;
     color: #1c1c1c;
-    background: #FFB800;
-    padding-left: 35px;
-    padding-right: 35px;
+    background: #D1D2FF;
+    padding-left: 49px;
+    padding-right: 49px;
 }
 
 @media(max-width: 1760px){
