@@ -1,0 +1,60 @@
+.main-wrapper{
+    margin:20px;
+    background: #121212;
+    border-radius: 20px;
+}
+
+.main-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.search-container{
+    display: flex;
+    border: 1px solid white;
+    opacity: 30%;
+    border-radius: 20px;
+}
+
+.add-post-button-block{
+    display: flex;
+    align-items: center;
+    background: #1b1b1b;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.search-textarea{
+    display: flex;
+    align-items: center;
+    width: 30rem;
+    padding: 15px;
+}
+
+.search-field{
+    color: white;
+    width: 100%;
+    font-family: "Roboto";
+}
+
+.add-post-button-text{
+    margin-left: 20px;
+}
+
+.add-post-button-text h1{
+    font-family: "Roboto";
+    background: linear-gradient(45deg, #D1E1FF, #7AA7FF);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.add-post-button{
+    transition: transform 0.3s ease;
+}
+
+.add-post-button:hover{
+    transform: scale(1.03);
+}
+

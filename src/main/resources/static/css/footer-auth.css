@@ -1,0 +1,38 @@
+footer{
+    width: 355px;
+}
+.right-panel{
+    margin: 35px auto;
+    width: 300px;
+}
+
+.account-avatar img{
+    width: 42px;
+}
+.account-nickname h1{
+    color: white;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+.account-leave-button button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.account{
+    display: flex;
+    align-items: center;
+    background-color: #1c1c1c;
+    padding:15px;
+    border-radius: 18px;
+}
+.account-nickname{
+    padding-left: 1em;
+}
+.account-leave-button{
+    padding-left: 9em;
+}
+.account-leave-button img{
+    width: 24px;
+}
+
