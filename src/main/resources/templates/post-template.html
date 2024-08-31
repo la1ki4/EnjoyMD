@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/post-template.css}">
+    <title>Document</title>
+</head>
+<body>
+<div class="post-block" th:fragment="post">
+    <div class="post-wrapper">
+        <div class="post-header">
+            <div class="post-owner">
+                <div class="post-avatar">
+                    <img th:src="@{img/account-avatar-profile-user-6.svg}" alt="">
+                </div>
+                <div class="post-username">op2</div>
+            </div>
+            <div class="post-place">
+                Оргей, Hill & Valley
+            </div>
+        </div>
+        <div class="post-image">
+            <img th:src="@{img/cafe-chain-3-1.png}" alt="">
+        </div>
+        <div class="post-description">
+            Вот такой вот у нас был сегодня тимбилдинг с @Дима. ШАШЛЫК БЫЛ НАСТОЛЬКО КЛАССНЫЙ, что я уснул на лежаке потом.
+        </div>
+        <div class="post-feedback">
+            <div class="post-activity">
+                <div class="activity-icon">
+                    <img th:src="@{img/heart.svg}" alt="" class="like">
+                    <div class="count">4312</div>
+                </div>
+                <div class="activity-icon">
+                    <img th:src="@{img/comment-1.svg}" alt="" class="comment">
+                    <div class="count">384</div>
+                </div>
+                <div class="activity-icon">
+                    <img th:src="@{img/Subtract.svg}" alt="" class="repost">
+                    <div class="count">49</div>
+                </div>
+            </div>
+            <div class="post-views">
+                <div class="view-icon">
+                    <img th:src="@{img/view.svg}" alt="">
+                </div>
+                <div class="view-count">8000 <span> Views</span> </div>
+            </div>
+        </div>
+        <div class="post-add-comment-block">
+            <div class="avatar-post">
+                <img th:src="@{img/account-avatar-profile-user-6.svg}" alt="">
+            </div>
+            <input type="text" class="post-add-comment" placeholder="Write a comment">
+        </div>
+    </div>
+</div>
+</body>
+</html>
