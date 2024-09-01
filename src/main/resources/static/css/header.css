@@ -1,6 +1,6 @@
 .header{
     height: 90px;
-    margin: 50px;
+    margin: 50px 50px 0 50px;
 }
 
 .nav-bar{
@@ -25,6 +25,39 @@
     font-weight: lighter;
 }
 
-.yel a{
-    color: #FFB800;
+.white-blue a{
+    color: #D1D2FF;
+}
+
+.circle{
+    position: absolute;
+    border-radius: 50%;
+}
+
+.blue{
+    width: 60px;
+    height: 69px;
+    background-color: #7AA7FF;
+    z-index: -1;
+    filter: blur(69px);
+}
+
+.yellow{
+    width: 42px;
+    height: 49px;
+    background-color: #C19B13;
+    z-index: -1;
+    filter: blur(69px);
+    left:102px;
+    top: 86px;
+}
+
+.red{
+    width: 42px;
+    height: 49px;
+    background-color: #BE0101;
+    z-index: -1;
+    filter: blur(69px);
+    left:162px;
+    top: 66px;
 }

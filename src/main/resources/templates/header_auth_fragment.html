@@ -1,0 +1,120 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <nav class="nav-bar">
+            <div class="logo">
+                <div class="circle blue"></div>
+                <div class="circle yellow"></div>
+                <div class="circle red"></div>
+                <a href="/main"><img th:src="@{img/EnjoyMDLogo.svg}" alt="" srcset=""></a>
+            </div>
+        </nav>
+        <div class="category-block">
+            <div class="category-list">
+                <div class="category-header">
+                    <h1>Category</h1>
+                </div>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Relax</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p1 up-picture"></div>
+                            <div class="category-picture p2 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Coffee</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p3 up-picture"></div>
+                            <div class="category-picture p4 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Food</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p5 up-picture"></div>
+                            <div class="category-picture p6 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Religion</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p7 up-picture"></div>
+                            <div class="category-picture p8 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Fun</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p9 up-picture"></div>
+                            <div class="category-picture p10 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="category">
+                        <div class="category-name">
+                            <h1>Fitness</h1>
+                        </div>
+                        <div class="category-pictures">
+                            <div class="category-picture p11 up-picture"></div>
+                            <div class="category-picture p12 down-picture"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="last-post-block">
+            <div class="post-header">
+                <h1>Last post</h1>
+            </div>
+            <div class="last-post">
+                <div class="last-post-header">
+                    <h1>Your last post in galery</h1>
+                </div>
+                    <div class="last-post-image-block">
+                        <div class="last-post-image"></div>
+                        <a href="#">
+                            <div class="button-last-post-block">
+                                <div class="button-add-last-post">
+                                    <img th:src="@{img/Vector.svg}" alt="" srcset="">
+                                </div>
+                                <div class="button-last-post-name">
+                                    <h1>Add post?</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

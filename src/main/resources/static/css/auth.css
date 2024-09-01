@@ -1,11 +1,11 @@
 body{
-    background: url("../img/bgsite.png");
+    background-color: #0D0D0D;
 }
 
 .container{
     max-width: 809px;
     margin: 0 auto;
-    background: #FFB800;
+    background: #D1D2FF;
     border-radius: 30px;
     padding: 40px;
 }
@@ -13,8 +13,8 @@ body{
 
 .create-account h1{
     font-size: 48px;
-    text-align: center;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat-Bold';
+    padding-bottom: 50px;
 }
 
 .field{
@@ -40,9 +40,9 @@ body{
 .auth-button{
     background: #141414;
     color: #D9D9D9;
-    font-size: 48px;
-    padding: 27px 114px;
-    border-radius: 30px;
+    font-size: 24px;
+    padding: 27px 40px;
+    border-radius: 20px;
     font-family: 'Montserrat';
     transition: background-color 0.5s ease, transform 0.5s ease;
     cursor: pointer;
@@ -50,8 +50,7 @@ body{
 
 .button{
     display: flex;
-    justify-content: center;
-    padding: 54px;
+    padding-top: 54px;
 }
 
 .button .auth-button:hover{

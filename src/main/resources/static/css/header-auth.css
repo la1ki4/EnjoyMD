@@ -1,0 +1,283 @@
+body{
+    background-color: #0D0D0D;
+}
+
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu{
+    display: flex;
+}
+
+.link-text{
+    margin-left: 97px;
+}
+
+
+.link-text a{
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat ExtraLight';
+    font-weight: lighter;
+}
+
+.yel a{
+    color: #FFB800;
+}
+
+.circle{
+    position: absolute;
+    border-radius: 50%;
+}
+
+.blue{
+    width: 60px;
+    height: 69px;
+    background-color: #7AA7FF;
+    z-index: -1;
+    filter: blur(69px);
+}
+
+.yellow{
+    width: 42px;
+    height: 49px;
+    background-color: #C19B13;
+    z-index: -1;
+    filter: blur(69px);
+    left:102px;
+    top: 86px;
+}
+
+.red{
+    width: 42px;
+    height: 49px;
+    background-color: #BE0101;
+    z-index: -1;
+    filter: blur(69px);
+    left:162px;
+    top: 66px;
+}
+
+header{
+    max-width: 400px;
+}
+
+.header{
+    padding: 60px 0 0 45px;
+}
+
+.category-block{
+    display: flex;
+    width: 100%;
+}
+
+.category-list{
+    width: 100%;
+    margin: 0 30px 0 0;
+    display: inline-block;
+}
+
+.category-header{
+    padding-top: 65px;
+}
+
+.category-header h1{
+    font-family: "Roboto";
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.category{
+    width: calc(50% - 52.5px);
+    height: 110px;
+    background-color: #1c1c1c;
+    border-radius: 20px;
+    float: left;
+    margin-right: 16px;
+    margin-top: 16px;
+    transition: transform 0.3s ease;
+}
+
+.category:hover{
+    transform: scale(1.05);
+}
+
+.post-header{
+    margin-top: 16px;
+}
+
+.post-header h1{
+    font-family: "Roboto";
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.last-post{
+    width: calc(100% - 120px);
+    height: 220px;
+    background-color: #1c1c1c;
+    border-radius: 20px;
+    margin-right: 16px;
+    margin-top: 16px;
+}
+
+.category-name h1{
+    font-size: 21px;
+    font-family: "Roboto";
+    color: white;
+    text-align: center;
+}
+.category-name{
+    padding-top: 5px;
+}
+
+.category-pictures{
+    position: relative;
+    margin: 0 20px;
+}
+
+.category-picture{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.p1{
+    background-image: url("../img/benefits-of-rest-hero-940x529.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.up-picture{
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.p2{
+    background-image: url("../img/213_resized.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.down-picture{
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.p3{
+    background-image: url("../img/tony-lee-8IKf54pc3qk-unsplash-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p4{
+    background-image: url("../img/cafe-chain-3-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p5{
+    background-image: url("../img/pexels-photo-262978.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p6{
+    background-image: url("../img/salcioara_facade.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p7{
+    background-image: url("../img/original-1g5r.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p8{
+    background-image: url("../img/cerkov_1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p9{
+    background-image: url("../img/050ce3ed1af3caf5d0bfc23a6d1a8675_w470.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p10{
+    background-image: url("../img/5703aff655a97-pic_club.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p11{
+    background-image: url("../img/Joining-a-Gym-Affordable-Gym-Memberships-1024x640.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p12{
+    background-image: url("../img/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.last-post-header h1{
+    font-family: "Roboto";
+    color: white;
+    font-size: 21px;
+}
+
+.last-post-header{
+    padding: 10px 30px;
+}
+
+.last-post-image{
+    position: absolute;
+    background-image: url("../img/213_resized.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0 37%;
+    height: 135px;
+    border-radius: 5px;
+}
+
+.last-post-image-block{
+    position: relative;
+    padding: 0 30px;
+}
+
+.button-last-post-block{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background-color: #1c1c1c;
+    padding: 10px;
+    border-radius: 12px;
+    left: 65px;
+    top:80px;
+    transition: transform 0.3s ease;
+}
+
+.button-add-last-post{
+    margin-right: 20px;
+}
+
+.button-last-post-name h1{
+    font-family: Roboto;
+    background: linear-gradient(45deg, #FFF5E7, #FFC061);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button-last-post-block:hover{
+    transform: scale(1.03);
+}
