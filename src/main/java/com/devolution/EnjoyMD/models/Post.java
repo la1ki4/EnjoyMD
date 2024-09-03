@@ -20,11 +20,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String title;
-
-    private String content;
-
     private String location;
+
+    private String description;
+
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
