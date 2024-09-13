@@ -23,7 +23,7 @@
                         <input type="text" class="search-field" placeholder="Find a place,peoples or something interesting">
                     </div>
                 </div>
-                <button class="add-post-button">
+                <a class="add-post-button" href="/posts/add">
                     <div class="add-post-button-block">
                         <div class="add-post-button-image">
                             <img th:src="@{/img/add-blue.svg}" alt="" srcset="">
@@ -32,13 +32,11 @@
                             <h1>Add post</h1>
                         </div>
                     </div>
-                </button>
+                </a>
             </div>
-            <div th:insert="~{post-template :: post}"></div>
-            <div th:insert="~{post-template :: post}"></div>
-            <div th:insert="~{post-template :: post}"></div>
-            <div th:insert="~{post-template :: post}"></div>
-            <div th:insert="~{post-template :: post}"></div>
+        </div>
+        <div th:each="post : ${posts}">
+            <div th:insert="post-template :: postFragment(${post})"></div>
         </div>
     </main>
     <div th:insert="footer_auth_fragment :: footer"></div>

@@ -9,24 +9,22 @@
     <title>Document</title>
 </head>
 <body>
-<div class="post-block" th:fragment="post">
+<div class="post-block" th:fragment="postFragment(post)">
     <div class="post-wrapper">
         <div class="post-header">
             <div class="post-owner">
                 <div class="post-avatar">
                     <img th:src="@{img/account-avatar-profile-user-6.svg}" alt="">
                 </div>
-                <div class="post-username">op2</div>
+                <div class="post-username" th:text="${post.author.username}"></div>
             </div>
-            <div class="post-place">
-                Оргей, Hill & Valley
+            <div class="post-place" th:text="${post.location}">
             </div>
         </div>
         <div class="post-image">
-            <img th:src="@{img/cafe-chain-3-1.png}" alt="">
+            <img th:src="@{${post.fileName}}" alt="">
         </div>
-        <div class="post-description">
-            Вот такой вот у нас был сегодня тимбилдинг с @Дима. ШАШЛЫК БЫЛ НАСТОЛЬКО КЛАССНЫЙ, что я уснул на лежаке потом.
+        <div th:text="${post.description}" class="post-description">
         </div>
         <div class="post-feedback">
             <div class="post-activity">
