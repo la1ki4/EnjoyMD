@@ -15,6 +15,10 @@ public class MyUserDetails implements UserDetails {
 
     private User user;
 
+    public User getUser() {
+        return this.user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.stream(user.getRole().split(", "))

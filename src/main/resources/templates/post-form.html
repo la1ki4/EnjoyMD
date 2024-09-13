@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/post-form.css}">
+  <title>Форма выкладывания поста</title>
+</head>
+<body>
+<div class="post-form-container">
+  <!-- Форма отправки поста -->
+  <form th:action="@{/posts/add}" method="post" class="post-form" enctype="multipart/form-data">
+    <h2>Создать пост</h2>
+
+    <!-- Поле для ввода локации -->
+    <label for="location">Локация:</label>
+    <input type="text" id="location" name="location"  placeholder="Введите локацию" required>
+
+    <!-- Поле для загрузки файла -->
+    <label for="file">Выберите файл:</label>
+    <input type="file" id="file" name="file" accept="image/*" required>
+
+    <!-- Поле для ввода описания поста -->
+    <label for="description">Описание:</label>
+    <textarea id="description" name="description" placeholder="Введите описание поста" rows="4" required></textarea>
+
+    <!-- Кнопка отправки формы -->
+    <button type="submit" class="btn">Опубликовать</button>
+  </form>
+</div>
+</body>
+</html>
+

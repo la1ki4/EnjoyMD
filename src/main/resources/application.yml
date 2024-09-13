@@ -1,6 +1,11 @@
 database:
  type: DB
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      max-request-size: 2MB
   application:
     name: EnjoyMD
   datasource:
@@ -23,3 +28,5 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.springframework.transaction: TRACE
+upload:
+  path: D:/post-img
