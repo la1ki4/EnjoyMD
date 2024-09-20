@@ -29,8 +29,12 @@
         <div class="post-feedback">
             <div class="post-activity">
                 <div class="activity-icon">
-                    <img th:src="@{img/heart.svg}" alt="" class="like">
-                    <div class="count">4312</div>
+                    <form th:action="'/main/toggleLike/' + ${post.id}" name="ourForm" method="post" class="like-form" th:data-post-id="${post.id}">
+                        <button type="submit" name="ourForm__btn" class="like-button">
+                            <img th:src="@{img/heart.svg}" alt="" class="like">
+                        </button>
+                    </form>
+                    <span class="count" th:id="'like-count-' + ${post.id}" th:text="${post.likes.size()}"></span>
                 </div>
                 <div class="activity-icon">
                     <img th:src="@{img/comment-1.svg}" alt="" class="comment">

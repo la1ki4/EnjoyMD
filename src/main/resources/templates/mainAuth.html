@@ -34,11 +34,12 @@
                     </div>
                 </a>
             </div>
-        </div>
-        <div th:each="post : ${posts}">
-            <div th:insert="post-template :: postFragment(${post})"></div>
+            <div th:each="post : ${posts}">
+                <div th:insert="post-template :: postFragment(${post})"></div>
+            </div>
         </div>
     </main>
     <div th:insert="footer_auth_fragment :: footer"></div>
+    <script type="text/javascript" th:src="@{/js/like.js}"></script>
 </body>
 </html>
