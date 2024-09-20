@@ -1,5 +1,6 @@
 package com.devolution.EnjoyMD.controllers;
 
+import com.devolution.EnjoyMD.models.Like;
 import com.devolution.EnjoyMD.models.Post;
 import com.devolution.EnjoyMD.services.PostService;
 import lombok.AllArgsConstructor;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @AllArgsConstructor

@@ -1,5 +1,6 @@
 .post-block{
     margin:15px;
+    max-width: 720px;
 }
 
 .post-wrapper{

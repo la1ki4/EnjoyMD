@@ -1,8 +1,9 @@
 package com.devolution.EnjoyMD.services;
 
-import com.devolution.EnjoyMD.config.MyUserDetails;
+import com.devolution.EnjoyMD.models.Like;
 import com.devolution.EnjoyMD.models.Post;
 import com.devolution.EnjoyMD.models.User;
+import com.devolution.EnjoyMD.repository.LikeRepository;
 import com.devolution.EnjoyMD.repository.PostRepository;
 import com.devolution.EnjoyMD.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +22,12 @@ public class PostService {
     @Value("${upload.path}")
     private String uploadPath;
     private UserRepository userRepository;
+    private LikeRepository likeRepository;
 
-    PostService(PostRepository postRepository, UserRepository userRepository) {
+    PostService(PostRepository postRepository, UserRepository userRepository, LikeRepository likeRepository) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
+        this.likeRepository = likeRepository;
     }
 
 
@@ -60,6 +63,10 @@ public class PostService {
         }
 
         postRepository.save(post);
+    }
+
+    public Post findPostById(int id) {
+        return postRepository.findById(id).isPresent() ? postRepository.findById(id).get() : null;
     }
 
     public List<Post> findAllPosts(){

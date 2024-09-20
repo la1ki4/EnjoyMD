@@ -8,27 +8,29 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/posts")
 public class PostController {
 
     private final PostService postService;
 
-    @GetMapping("/posts/add")
+
+    @GetMapping("/add")
     public String postForm(Model model) {
         model.addAttribute("post", new Post());
         return "post-form";
     }
 
 
-    @PostMapping("/posts/add")
+    @PostMapping("/add")
     public String addPost(@AuthenticationPrincipal MyUserDetails userDetails,
                           @RequestParam String location,
                           @RequestParam("file") MultipartFile file,
@@ -44,5 +46,4 @@ public class PostController {
         postService.addPost(user,location,file,description);
         return "redirect:/main";
     }
-
 }
