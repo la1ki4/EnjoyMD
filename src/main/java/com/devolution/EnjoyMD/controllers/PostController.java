@@ -44,6 +44,6 @@ public class PostController {
         }
 
         postService.addPost(user,location,file,description);
-        return "redirect:/main";
+        return "redirect:/";
     }
 }
