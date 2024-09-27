@@ -26,7 +26,6 @@ public class RegistrationController {
             return "register";
         }
 
-        userService.registerUser(user);
         return "redirect:/main";
     }
 }
