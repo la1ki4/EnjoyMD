@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 
 @RestController
@@ -23,7 +22,7 @@ public class LikeController {
     private final PostService postService;
 
     @GetMapping("/showLike/{postId}")
-    public ResponseEntity<Map<String,Integer>> showLike(@PathVariable int postId) {
+    public ResponseEntity<Map<String,Integer>> toggleLike(@PathVariable int postId) {
         Post currentPost = postService.findPostById(postId);
         int likesCount = currentPost.getLikes().size();
 
