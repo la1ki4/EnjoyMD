@@ -21,7 +21,7 @@ public class LikeController {
     private final LikeService likeService;
     private final PostService postService;
 
-    @GetMapping("/showLike/{postId}")
+    @GetMapping( value = "/showLike/{postId}" , produces = "application/json")
     public ResponseEntity<Map<String,Integer>> toggleLike(@PathVariable int postId) {
         Post currentPost = postService.findPostById(postId);
         int likesCount = currentPost.getLikes().size();
@@ -32,14 +32,14 @@ public class LikeController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/toggleLike/{postId}")
+    @PostMapping( value = "/toggleLike/{postId}")
     @ResponseBody
     public Map<String, Object> toggleLike(@PathVariable int postId, @AuthenticationPrincipal MyUserDetails userDetails) {
         User currentUser = userDetails.getUser();
         int updLikeCount = likeService.toggleLike(postId,currentUser);
 
         Map<String,Object> response = new HashMap<>();
-        response.put("likeCount", updLikeCount);
+        response.put("likesCount", updLikeCount);
 
         return response;
     }

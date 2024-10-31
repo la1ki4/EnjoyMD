@@ -1,5 +1,6 @@
 package com.devolution.EnjoyMD.services;
 
+import com.devolution.EnjoyMD.DTO.LikeDto;
 import com.devolution.EnjoyMD.models.Like;
 import com.devolution.EnjoyMD.models.Post;
 import com.devolution.EnjoyMD.models.User;
@@ -30,3 +31,4 @@ public class LikeService {
         return postRepository.findById(postId).isPresent() ? postRepository.findById(postId).get().getLikes().size() : null;
     }
 }
+
