@@ -29,10 +29,5 @@ public class Comment {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    private LocalDateTime createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
+    private String createdAt;
 }

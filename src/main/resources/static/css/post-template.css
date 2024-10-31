@@ -104,6 +104,10 @@
     padding: 15px 0;
 }
 
+.post-add-comment-block form{
+    margin: auto 0;
+}
+
 .post-add-comment{
     color: white;
     width: 100%;
@@ -117,4 +121,32 @@
 
 .avatar-post img{
     height: 32px;
+}
+
+.comments h3{
+    text-align: center;
+    margin-top: 15px;
+    font-family: "Roboto";
+    color: white;
+    opacity: 30%;
+}
+
+.comments div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-family: "Roboto";
+}
+
+.comment{
+    color: white;
+}
+
+.comment-date{
+    color: #bababa;
+}
+
+.view-count{
+    text-align: center;
+    opacity: 30%;
 }

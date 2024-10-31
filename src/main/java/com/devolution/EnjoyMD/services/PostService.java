@@ -1,53 +1,54 @@
 package com.devolution.EnjoyMD.services;
 
-import com.devolution.EnjoyMD.models.Like;
+import com.devolution.EnjoyMD.DTO.CommentDto;
+import com.devolution.EnjoyMD.DTO.PostDto;
 import com.devolution.EnjoyMD.models.Post;
 import com.devolution.EnjoyMD.models.User;
 import com.devolution.EnjoyMD.repository.LikeRepository;
 import com.devolution.EnjoyMD.repository.PostRepository;
 import com.devolution.EnjoyMD.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
-    private PostRepository postRepository;
+
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
+    private final LikeRepository likeRepository;
+
     @Value("${upload.path}")
     private String uploadPath;
-    private UserRepository userRepository;
-    private LikeRepository likeRepository;
 
-    PostService(PostRepository postRepository, UserRepository userRepository, LikeRepository likeRepository) {
+    @Autowired
+    public PostService(PostRepository postRepository, UserRepository userRepository, LikeRepository likeRepository) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.likeRepository = likeRepository;
     }
 
-
-    public void addPost(User user,
-                        String location,
-                        MultipartFile file,
-                        String description
-    ) throws IOException {
-
-        Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
-        if(existingUser.isEmpty()) {
-            throw new IllegalArgumentException("User not found in the database");
+    @Transactional
+    public void addPost(User user, PostDto postDto, MultipartFile file) throws IOException {
+        if (user == null) {
+            throw new IllegalArgumentException("Authenticated user is required.");
         }
 
-        User actualUser = existingUser.get();
-
         Post post = new Post();
-        post.setLocation(location);
-        post.setDescription(description);
-        post.setAuthor(actualUser);
+        post.setLocation(postDto.getLocation());
+        post.setDescription(postDto.getDescription());
+        post.setAuthor(user);
 
         if (file != null && !file.isEmpty()) {
             File uploadDir = new File(uploadPath);
@@ -58,7 +59,6 @@ public class PostService {
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
 
             file.transferTo(new File(uploadPath + "/" + resultFileName));
-
             post.setFileName("/images/" + resultFileName);
         }
 
@@ -66,11 +66,44 @@ public class PostService {
     }
 
     public Post findPostById(int id) {
-        return postRepository.findById(id).isPresent() ? postRepository.findById(id).get() : null;
+        return postRepository.findById(id).orElse(null);
     }
 
-    public List<Post> findAllPosts(){
+    public List<Post> findAllPosts() {
         return postRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public List<PostDto> findPosts(int page, int size) {
+        Page<Post> postPage = postRepository.findAll(PageRequest.of(page, size, Sort.by("createdAt").descending()));
+        return postPage.getContent().stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    private PostDto convertToDto(Post post) {
+        PostDto postDto = new PostDto();
+        postDto.setId(post.getId());
+        postDto.setLocation(post.getLocation());
+        postDto.setDescription(post.getDescription());
+        postDto.setFileName(post.getFileName());
+        postDto.setAuthorUsername(post.getAuthor().getUsername());
+        postDto.setLikeCount(post.getLikes().size());
+
+        // Конвертация комментариев
+        List<CommentDto> commentDtos = post.getComments().stream()
+                .map(comment -> {
+                    CommentDto dto = new CommentDto();
+                    dto.setId(comment.getId());
+                    dto.setContent(comment.getContent());
+                    dto.setAuthorUsername(comment.getAuthor().getUsername());
+                    dto.setCreatedAtFormatted(String.valueOf(comment.getCreatedAt())); // Функция для форматирования даты
+                    return dto;
+                }).collect(Collectors.toList());
+
+        postDto.setComments(commentDtos);
+        return postDto;
+    }
+
 }
+
