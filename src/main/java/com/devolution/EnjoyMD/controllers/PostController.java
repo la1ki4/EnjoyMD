@@ -36,7 +36,8 @@ public class PostController {
     @PostMapping("/add")
     public String addPost(@AuthenticationPrincipal MyUserDetails userDetails,
                           @ModelAttribute PostDto postDto, // Измените на PostDto
-                          @RequestParam("file") MultipartFile file
+                          @RequestParam("file") MultipartFile file,
+                          @RequestParam("categoryIds") List<Integer> categoryIds
     ) throws IOException {
 
         User user = userDetails.getUser();
@@ -46,7 +47,7 @@ public class PostController {
         }
 
         postDto.setAuthorUsername(user.getUsername());
-        postService.addPost(user, postDto, file);
+        postService.addPost(user, postDto, file,categoryIds);
         return "redirect:/";
     }
 
@@ -57,5 +58,10 @@ public class PostController {
         return ResponseEntity.ok(posts);
     }
 
+    @GetMapping("/categories")
+    public ResponseEntity<List<PostDto>> getPostsByCategories(@RequestParam List<String> category) {
+        List<PostDto> posts = postService.getPostsByCategories(category);
+        return ResponseEntity.ok(posts);
+    }
 }
 

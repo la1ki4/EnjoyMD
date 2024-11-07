@@ -12,22 +12,53 @@
   <form th:action="@{/posts/add}" method="post" class="post-form" enctype="multipart/form-data">
     <h2>Создать пост</h2>
 
+    <!-- Поле для выбора категории -->
+    <label>Категория:</label>
+    <div class="categories-container">
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="1">
+            <span>Relax</span>
+        </label>
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="2">
+            <span>Coffee</span>
+        </label>
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="3">
+            <span>Food</span>
+        </label>
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="4">
+            <span>Religion</span>
+        </label>
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="5">
+            <span>Fun</span>
+        </label>
+        <label class="category-option">
+            <input type="checkbox" name="categoryIds" value="6">
+            <span>Health</span>
+        </label>
+    </div>
+
     <!-- Поле для ввода локации -->
-    <label for="location">Локация:</label>
-    <input type="text" id="location" name="location"  placeholder="Введите локацию" required>
+    <label for="location">Место:</label>
+    <input type="text" id="location" name="location" placeholder="Как называется место?" required>
 
     <!-- Поле для загрузки файла -->
-    <label for="file">Выберите файл:</label>
+    <label for="file">Изображение места:</label>
     <input type="file" id="file" name="file" accept="image/*" required>
 
     <!-- Поле для ввода описания поста -->
     <label for="description">Описание:</label>
-    <textarea id="description" name="description" placeholder="Введите описание поста" rows="4" required></textarea>
+    <textarea id="description" name="description" placeholder="Опишите место" rows="4" required></textarea>
 
     <!-- Кнопка отправки формы -->
     <button type="submit" class="btn">Опубликовать</button>
   </form>
 </div>
+
+<script type="text/javascript" th:src="@{/js/postform-checkbox.js}"></script>
 </body>
 </html>
 
