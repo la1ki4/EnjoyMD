@@ -1,9 +1,12 @@
 package com.devolution.EnjoyMD.services;
 
+import com.devolution.EnjoyMD.DTO.CategoryDto;
 import com.devolution.EnjoyMD.DTO.CommentDto;
 import com.devolution.EnjoyMD.DTO.PostDto;
+import com.devolution.EnjoyMD.models.Category;
 import com.devolution.EnjoyMD.models.Post;
 import com.devolution.EnjoyMD.models.User;
+import com.devolution.EnjoyMD.repository.CategoryRepository;
 import com.devolution.EnjoyMD.repository.LikeRepository;
 import com.devolution.EnjoyMD.repository.PostRepository;
 import com.devolution.EnjoyMD.repository.UserRepository;
@@ -18,8 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,19 +30,21 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
     private final LikeRepository likeRepository;
+    private final CategoryRepository categoryRepository;
 
     @Value("${upload.path}")
     private String uploadPath;
 
     @Autowired
-    public PostService(PostRepository postRepository, UserRepository userRepository, LikeRepository likeRepository) {
+    public PostService(PostRepository postRepository, UserRepository userRepository, LikeRepository likeRepository, CategoryRepository categoryRepository) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.likeRepository = likeRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Transactional
-    public void addPost(User user, PostDto postDto, MultipartFile file) throws IOException {
+    public void addPost(User user, PostDto postDto, MultipartFile file, List<Integer> categoryIds) throws IOException {
         if (user == null) {
             throw new IllegalArgumentException("Authenticated user is required.");
         }
@@ -62,6 +66,8 @@ public class PostService {
             post.setFileName("/images/" + resultFileName);
         }
 
+        List<Category> categories = new ArrayList<>(categoryRepository.findAllById(categoryIds));
+        post.setCategories(categories);
         postRepository.save(post);
     }
 
@@ -91,18 +97,57 @@ public class PostService {
         postDto.setLikeCount(post.getLikes().size());
 
         // Конвертация комментариев
-        List<CommentDto> commentDtos = post.getComments().stream()
+        List<CommentDto> commentDto = post.getComments().stream()
                 .map(comment -> {
                     CommentDto dto = new CommentDto();
                     dto.setId(comment.getId());
                     dto.setContent(comment.getContent());
                     dto.setAuthorUsername(comment.getAuthor().getUsername());
-                    dto.setCreatedAtFormatted(String.valueOf(comment.getCreatedAt())); // Функция для форматирования даты
+                    dto.setCreatedAtFormatted(String.valueOf(comment.getCreatedAt()));
                     return dto;
-                }).collect(Collectors.toList());
+                })
+                .collect(Collectors.toList());
+        postDto.setComments(commentDto);
 
-        postDto.setComments(commentDtos);
+        List<CategoryDto> categoriesDto = post.getCategories().stream()
+                .map(category -> {
+                    CategoryDto dto = new CategoryDto();
+                    dto.setId(category.getId());
+                    dto.setName(category.getName());
+                    return dto;
+                })
+                .collect(Collectors.toList());
+        postDto.setCategories(categoriesDto);
+
+
         return postDto;
+    }
+
+    public List<PostDto> getPostsByCategories(List<String> categoryNames) {
+
+        if (categoryNames == null || categoryNames.isEmpty()) {
+            return Collections.emptyList(); // Вернуть пустой список, если нет категорий
+        }
+
+        return postRepository.findByCategoryNames(categoryNames).stream()
+                .map(post -> new PostDto(
+                        post.getId(),
+                        post.getLocation(),
+                        post.getDescription(),
+                        post.getFileName(),
+                        post.getAuthor().getUsername(),
+                        post.getComments().stream()
+                                .map(comment -> new CommentDto(/* параметры */))
+                                .collect(Collectors.toList()),
+                        post.getCategories().stream()
+                                .map(category -> new CategoryDto(category.getId(), category.getName()))
+                                .collect(Collectors.toList()),
+                        post.getComments().size(),
+                        post.getLikes().size(),
+                        post.getViews().size(),
+                        post.getCreatedAt()
+                ))
+                .collect(Collectors.toList());
     }
 
 }

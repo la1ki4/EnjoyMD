@@ -45,6 +45,11 @@ function createPostElement(post) {
     const div = document.createElement('div');
     div.className = 'post-block';
 
+    // Создаем HTML для категорий
+    const categoriesHtml = post.categories && post.categories.length > 0
+        ? post.categories.map(category => `<span class="post-category">${category.name}</span>`).join(', ')
+        : 'No categories';
+
     div.innerHTML = `
     <div class="post-wrapper">
         <div class="post-header">
@@ -55,6 +60,11 @@ function createPostElement(post) {
                 <div class="post-username">${post.authorUsername || 'Unknown'}</div>
             </div>
             <div class="post-place">${post.location || 'Unknown location'}</div>
+        </div>
+        <div class="post-categories">
+            <div class="categoryy">
+                 ${categoriesHtml}
+            </div>
         </div>
         <div class="post-image">
             <img src="${post.fileName}" alt="">
@@ -115,6 +125,7 @@ function createPostElement(post) {
 
     return div;
 }
+
 
 function toggleLike(postId) {
     fetch(`/main/toggleLike/${postId}`, { method: 'POST' })
